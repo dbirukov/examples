@@ -74,9 +74,10 @@ namespace SDKClassicalESExample
 
         private Task<WriteResult> EmitEvent<TEventBase>(string stream, TEventBase @event) where TEventBase : EventBase
         {
-            //todo add retries in case of error 
             Console.WriteLine("Sending to stream {0}: event {1}", stream, @event);
-            return _connection.AppendToStreamAsync(stream, ExpectedVersion.Any, CreateEvent(@event));
+            return _connection
+                .AppendToStreamAsync(stream, ExpectedVersion.Any, CreateEvent(@event))
+                .Retry(5, 200);
         }
 
         private EventData[] CreateEvent<TEventBase>(TEventBase @event)  where TEventBase : EventBase
@@ -118,7 +119,5 @@ namespace SDKClassicalESExample
                 Console.WriteLine("SubscriptionDropped without errors");
             }
         }
-
-
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EsSubscription.cs" />
+    <Compile Include="TaskExtentions.cs" />
     <Compile Include="TestEventClass.cs" />
   </ItemGroup>
   <ItemGroup>
