@@ -25,7 +25,11 @@ namespace SKDClassicalExample
             });
   
             eventBus.Publish(new GenericEvent<string>("Hello")).Wait(); // publishing custom data 
-            eventBus.Publish(new GenericEvent<int>(123)).Wait(); // publishing custom data 
+            eventBus.Publish(new GenericEvent<int>(123)).Wait(); // publishing custom data
+            
+            Console.WriteLine("->>Press key to stop waiting events");
+            Console.ReadKey();
+
         }
     }
 }
