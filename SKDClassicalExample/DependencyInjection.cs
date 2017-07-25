@@ -8,7 +8,6 @@ namespace SDKExample1
 {
     public class DependencyInjection : IDisposable
     {
-        public const string WA_NEW_CUSTOMER_STREAM = "WA-New-Customer-Stream";
         private IContainer Container { get; }
 
         public DependencyInjection()

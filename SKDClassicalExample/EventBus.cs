@@ -72,15 +72,11 @@ namespace SKDClassicalExample
             PublishAsyncInternal(eventItem, callback);
         }
 
-        #region PRIVATE METHODS
-
         private void PublishAsyncInternal<TEventBase>(TEventBase eventItem, AsyncCallback callback) where TEventBase : EventBase
         {
             Action publishAction = () => Publish(eventItem);
             publishAction.BeginInvoke(callback, null);
         }
-
-        #endregion
 
         private readonly Dictionary<Type, List<ISubscription>> _subscriptions;
     }
