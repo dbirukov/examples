@@ -1,14 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using SDKClassicalLib.Commands;
 
 namespace SDKClassicalLib.Interfaces
 {
-    public interface ICommandHandler<in TCommand>: ICommandHandler where TCommand: CommandBase
+    public interface ICommandHandler: IDisposable
     {
-        Task Handle(TCommand @event);
-    }
-
-    public interface ICommandHandler
-    {
+        Task Handle(CommandBase command);
     }
 }

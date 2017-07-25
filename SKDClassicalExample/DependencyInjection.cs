@@ -4,6 +4,7 @@ using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 using SKDClassicalExample;
+using SKDClassicalExample.EventBus;
 
 namespace SDKExample1
 {

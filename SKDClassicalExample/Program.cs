@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SDKExample1;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
@@ -9,29 +10,35 @@ namespace SKDClassicalExample
     {
         public static void Main(string[] args)
         {
+            AsyncMain().GetAwaiter().GetResult();
+        }
+        
+        static async Task AsyncMain()
+        {
             var di = new DependencyInjection();
             
             IEventBus eventBus = di.Resolve<IEventBus>();
             
-            eventBus.Publish(new TestEventClass(Guid.NewGuid())).Wait(); // publishing custom user event
+            await eventBus.Publish(new TestEventClass(Guid.NewGuid())); // publishing custom user event
 
-            eventBus.Subscribe<GenericEvent<string>>(s =>
+            await eventBus.Subscribe<GenericEvent<string>>(s =>
             {
                 Console.WriteLine("String subscription 1: {0}", s.Payload);
             });
-            var tokenTask = eventBus.Subscribe<GenericEvent<string>>(s =>
+            var tokenTask = await eventBus.Subscribe<GenericEvent<string>>(s =>
             {
                 Console.WriteLine("String subscription 2: {0}", s.Payload);
-            }).Result;
+            });
 
-            eventBus.Publish(new GenericEvent<string>("Hello")).Wait(); // publishing custom data 
-            eventBus.Publish(new GenericEvent<int>(123)).Wait(); // publishing custom data
-            eventBus.Unsubscribe(tokenTask).Wait();
+            await eventBus.Publish(new GenericEvent<string>("Hello")); // publishing custom data 
+            await eventBus.Publish(new GenericEvent<int>(123)); // publishing custom data
+            await eventBus.Unsubscribe(tokenTask);
             
-            eventBus.Publish(new GenericEvent<string>("World")).Wait(); // publishing custom data
+            await eventBus.Publish(new GenericEvent<string>("World")); // publishing custom data
             
             Console.WriteLine("->>Press key to stop waiting events");
             Console.ReadKey();
         }
+
     }
 }

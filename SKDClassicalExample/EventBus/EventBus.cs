@@ -6,7 +6,7 @@ using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 
-namespace SKDClassicalExample
+namespace SKDClassicalExample.EventBus
 {
     public class EventBus : IEventBus
     {

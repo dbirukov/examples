@@ -3,7 +3,7 @@ using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 
-namespace SKDClassicalExample
+namespace SKDClassicalExample.EventBus
 {
     internal class Subscription<TEventBase> : ISubscription where TEventBase : EventBase
     {
