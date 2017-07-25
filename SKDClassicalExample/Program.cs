@@ -21,7 +21,7 @@ namespace SKDClassicalExample
             });
   
             eventBus.Publish(new GenericEvent<string>("Hello"));
-            eventBus.Publish(new GenericEvent<int>(123));
+            eventBus.PublishAsync(new GenericEvent<int>(123)).Wait();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SDKClassicalLib.Events;
 
 namespace SDKClassicalLib.Interfaces
@@ -8,7 +9,6 @@ namespace SDKClassicalLib.Interfaces
         SubscriptionToken Subscribe<TEventBase>(Action<TEventBase> action) where TEventBase : EventBase;
         void Unsubscribe(SubscriptionToken token);
         void Publish<TEventBase>(TEventBase eventItem) where TEventBase : EventBase;
-        void PublishAsync<TEventBase>(TEventBase eventItem) where TEventBase : EventBase;
-        void PublishAsync<TEventBase>(TEventBase eventItem, AsyncCallback callback) where TEventBase : EventBase;
+        Task PublishAsync<TEventBase>(TEventBase eventItem) where TEventBase : EventBase;
     }
 }

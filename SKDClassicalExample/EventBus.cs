@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
@@ -63,20 +64,15 @@ namespace SKDClassicalExample
             }
         }
 
-        public void PublishAsync<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
+        public Task PublishAsync<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
-            PublishAsyncInternal(eventItem, null);
+            return PublishAsyncInternal(eventItem);
         }
 
-        public void PublishAsync<TEventBase>(TEventBase eventItem, AsyncCallback callback) where TEventBase : EventBase
+        private async Task PublishAsyncInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
-            PublishAsyncInternal(eventItem, callback);
-        }
-
-        private void PublishAsyncInternal<TEventBase>(TEventBase eventItem, AsyncCallback callback) where TEventBase : EventBase
-        {
-            Action publishAction = () => Publish(eventItem);
-            publishAction.BeginInvoke(callback, null);
+            void PublishAction() => Publish(eventItem);
+            await Task.Run((Action) PublishAction);
         }
 
         private readonly Dictionary<Type, List<ISubscription>> _subscriptions;
