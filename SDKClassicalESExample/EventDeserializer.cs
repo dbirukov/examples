@@ -13,8 +13,12 @@ namespace SDKClassicalESExample
                 return null;
 
             using (var stream = new MemoryStream(resolvedEvent.Event.Data))
-            using (var reader = new StreamReader(stream))
-                return JsonSerializer.Create().Deserialize(reader, typeof(T)) as T;
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    return JsonSerializer.Create().Deserialize(reader, typeof(T)) as T;
+                }
+            }
         }
     }
 }
