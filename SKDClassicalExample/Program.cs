@@ -13,7 +13,7 @@ namespace SKDClassicalExample
             
             IEventBus eventBus = di.Resolve<IEventBus>();
             
-            eventBus.Publish(new TestEventClass(Guid.NewGuid())); // publishing custom user event
+            eventBus.Publish(new TestEventClass(Guid.NewGuid())).Wait(); // publishing custom user event
   
             eventBus.Subscribe<GenericEvent<string>>(s =>
             {

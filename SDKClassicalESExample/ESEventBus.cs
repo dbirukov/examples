@@ -50,7 +50,7 @@ namespace SDKClassicalESExample
         
         private Task<WriteResult> EmitEvent<TEventBase>(string stream, TEventBase @event) where TEventBase : EventBase
         {
-            Console.WriteLine("Senging to stream {0}: event {1}",stream, @event);
+            Console.WriteLine("Sending to stream {0}: event {1}",stream, @event);
             return _connection.AppendToStreamAsync(stream, ExpectedVersion.Any, CreateEvent(@event));
         }
 
