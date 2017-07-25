@@ -81,11 +81,12 @@ namespace SDKClassicalESExample
 
         private EventData[] CreateEvent<TEventBase>(TEventBase @event)  where TEventBase : EventBase
         {
+            var metadata = new Metadata(typeof(TEventBase).AssemblyQualifiedName);
             return new[]
             {
                 new EventData(Guid.NewGuid(), typeof(TEventBase).ToString(), true,
                     Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event)), 
-                    Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new Metadata(typeof(TEventBase).AssemblyQualifiedName))))
+                    Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata)))
             };
         }
         

@@ -1,5 +1,6 @@
 ﻿namespace SDKClassicalLib.Events
 {
+    //
     public class Metadata
     {
         public string EventType { get; protected set; }
