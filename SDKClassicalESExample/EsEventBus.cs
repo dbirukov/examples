@@ -33,7 +33,7 @@ namespace SDKClassicalESExample
             var token = new SubscriptionToken(typeof(TEventBase));
             var esSubscription = new EsSubscription<TEventBase>(action, token);
             var eventStoreSubscription = 
-                await _connection.SubscribeToStreamAsync(EsExample + typeof(TEventBase) ,false, EventAppeared(esSubscription), SubscriptionDropped);
+                await _connection.SubscribeToStreamAsync(GetStreamName<TEventBase>() ,false, EventAppeared(esSubscription), SubscriptionDropped);
             
             //todo refactor to constructor injection
             esSubscription.EventStoreSubscription = eventStoreSubscription;
@@ -63,9 +63,15 @@ namespace SDKClassicalESExample
 
         public Task Publish<TEventBase>(TEventBase @event) where TEventBase : EventBase
         {
-            return EmitEvent(EsExample + typeof(TEventBase), @event);
+            return EmitEvent(GetStreamName<TEventBase>(), @event);
         }
-        
+
+        private static string GetStreamName<TEventBase>() where TEventBase : EventBase
+        {
+            //simple naming strategy, in microservice env should be applied more complex strategy
+            return EsExample + typeof(TEventBase);
+        }
+
         private Task<WriteResult> EmitEvent<TEventBase>(string stream, TEventBase @event) where TEventBase : EventBase
         {
             //todo add retries in case of error 
