@@ -18,7 +18,7 @@ namespace SDKClassicalESExample
 
             IEventStoreConnection esconnection = GetConnection();
             esconnection.ConnectAsync();
-            IEventBus bus = new ESEventBus(esconnection);
+            IEventBus bus = new EsEventBus(esconnection);
 
             builder.RegisterInstance(bus);
             

@@ -10,13 +10,13 @@ using SDKClassicalLib.Interfaces;
 
 namespace SDKClassicalESExample
 {
-    public class ESEventBus : IEventBus
+    public class EsEventBus : IEventBus
     {
         private const string EsExample = "es-example-";
         private readonly IEventStoreConnection _connection;
         private readonly Dictionary<Type, List<ISubscription>> _subscriptions = new Dictionary<Type, List<ISubscription>>();
 
-        public ESEventBus(IEventStoreConnection connection)
+        public EsEventBus(IEventStoreConnection connection)
         {
             _connection = connection;
         }
