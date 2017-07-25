@@ -1,8 +1,9 @@
-﻿using SDKClassicalLib.Events;
+﻿using System;
+using SDKClassicalLib.Events;
 
 namespace SDKClassicalLib.Interfaces
 {
-    public interface ISubscription
+    public interface ISubscription: IDisposable
     {
         SubscriptionToken SubscriptionToken { get; }
         void Publish(EventBase eventBase);

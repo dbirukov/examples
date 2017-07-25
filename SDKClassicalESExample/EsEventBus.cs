@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EventStore.ClientAPI;
@@ -31,15 +32,33 @@ namespace SDKClassicalESExample
 
             var token = new SubscriptionToken(typeof(TEventBase));
             var esSubscription = new EsSubscription<TEventBase>(action, token);
+            var eventStoreSubscription = 
+                await _connection.SubscribeToStreamAsync(EsExample + typeof(TEventBase) ,false, EventAppeared(esSubscription), SubscriptionDropped);
+            
+            //todo refactor to constructor injection
+            esSubscription.EventStoreSubscription = eventStoreSubscription;
+            
             _subscriptions[typeof(TEventBase)].Add(esSubscription);
-
-            await _connection.SubscribeToStreamAsync(EsExample + typeof(TEventBase) ,false, EventAppeared(esSubscription), SubscriptionDropped);
+            
             return token;
         }
 
-        public Task Unsubscribe(SubscriptionToken token)
+        public async Task Unsubscribe(SubscriptionToken token)
         {
-            throw new NotImplementedException();
+            if (token == null)
+                throw new ArgumentNullException(nameof(token));
+
+            if (!_subscriptions.ContainsKey(token.EventItemType)) return;
+
+            var allSubscriptions = _subscriptions[token.EventItemType];
+            var subscriptionToRemove =
+                allSubscriptions.FirstOrDefault(x => x.SubscriptionToken.Token == token.Token);
+
+            if (subscriptionToRemove != null)
+            {
+                _subscriptions[token.EventItemType].Remove(subscriptionToRemove);
+                subscriptionToRemove.Dispose();
+            }
         }
 
         public Task Publish<TEventBase>(TEventBase @event) where TEventBase : EventBase
@@ -58,7 +77,7 @@ namespace SDKClassicalESExample
         {
             return new[]
             {
-                new EventData(Guid.NewGuid(), typeof(TEventBase).ToString(), true,
+                new EventData(Guid.NewGuid(), typeof(TEventBase).AssemblyQualifiedName, true,
                     Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event)), null)
             };
         }
@@ -88,7 +107,7 @@ namespace SDKClassicalESExample
             }
             else
             {
-                Console.WriteLine("SubscriptionDropped OnCompleted: {0}", e);
+                Console.WriteLine("SubscriptionDropped without errors");
             }
         }
 

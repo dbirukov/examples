@@ -19,13 +19,16 @@ namespace SDKClassicalESExample
             {
                 Console.WriteLine("String subscription 1: {0}", s.Payload);
             });
-            eventBus.Subscribe<GenericEvent<string>>(s =>
+            var tokenTask = eventBus.Subscribe<GenericEvent<string>>(s =>
             {
                 Console.WriteLine("String subscription 2: {0}", s.Payload);
-            });
+            }).Result;
 
             eventBus.Publish(new GenericEvent<string>("Hello")).Wait(); // publishing custom data 
             eventBus.Publish(new GenericEvent<int>(123)).Wait(); // publishing custom data
+            eventBus.Unsubscribe(tokenTask).Wait();
+            
+            eventBus.Publish(new GenericEvent<string>("World")).Wait(); // publishing custom data
             
             Console.WriteLine("->>Press key to stop waiting events");
             Console.ReadKey();

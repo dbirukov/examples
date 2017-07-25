@@ -9,10 +9,16 @@ namespace SDKClassicalESExample
     {
         public static T Deserialize<T>(ResolvedEvent resolvedEvent) where T : class
         {
-            if (typeof (T) != Type.GetType(resolvedEvent.Event.EventType, false))
+            var genType = typeof(T);
+            var eventType = resolvedEvent.Event.EventType; //make sense to move this information to metadata
+            var resEventType = Type.GetType(eventType, false);
+            if (genType != resEventType)
+            {
                 return null;
+            }
 
-            using (var stream = new MemoryStream(resolvedEvent.Event.Data))
+            var resolvedEventData = resolvedEvent.Event.Data;
+            using (var stream = new MemoryStream(resolvedEventData))
             {
                 using (var reader = new StreamReader(stream))
                 {

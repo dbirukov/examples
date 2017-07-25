@@ -25,5 +25,9 @@ namespace SKDClassicalExample
         }
 
         private readonly Action<TEventBase> _action;
+
+        public void Dispose()
+        {
+        }
     }
 }

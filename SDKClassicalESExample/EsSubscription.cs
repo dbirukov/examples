@@ -1,4 +1,5 @@
 ﻿using System;
+using EventStore.ClientAPI;
 using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
@@ -8,6 +9,12 @@ namespace SDKClassicalESExample
     internal class EsSubscription<TEventBase> : ISubscription where TEventBase : EventBase
     {
         public SubscriptionToken SubscriptionToken { get; }
+
+        public EventStoreSubscription EventStoreSubscription
+        {
+            get; 
+            set; //todo remove
+        }
 
         public EsSubscription(Action<TEventBase> action, SubscriptionToken token)
         {
@@ -25,5 +32,10 @@ namespace SDKClassicalESExample
         }
 
         private readonly Action<TEventBase> _action;
+
+        public void Dispose()
+        {
+            EventStoreSubscription?.Dispose();
+        }
     }
 }
