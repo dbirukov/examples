@@ -5,20 +5,21 @@ using SDKClassicalLib.Interfaces;
 
 namespace SKDClassicalExample.CommandBus
 {
-    public class CommandHandler<TCommand> : ICommandHandler where TCommand: CommandBase
+    public class CommandHandler : ICommandHandler
     {
-        public CommandHandler()
+        private readonly Func<CommandBase, Task> _handler; 
+        public CommandHandler(Func<CommandBase, Task> handler)
         {
+            _handler = handler;
         }
 
         public Task Handle(CommandBase command)
         {
-            throw new NotImplementedException();
+            return _handler(command);
         }
         
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

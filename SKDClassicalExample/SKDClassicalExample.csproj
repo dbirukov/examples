@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandBus\CommandBus.cs" />
     <Compile Include="CommandBus\CommandHandler.cs" />
     <Compile Include="DependencyInjection.cs" />
     <Compile Include="EventBus\EventBus.cs" />

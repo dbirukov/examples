@@ -10,11 +10,9 @@ namespace SKDClassicalExample.EventBus
 {
     public class EventBus : IEventBus
     {
-        public EventBus()
-        {
-            _subscriptions = new Dictionary<Type, List<ISubscription>>();
-        }
-
+        private readonly Dictionary<Type, List<ISubscription>> _subscriptions = 
+            new Dictionary<Type, List<ISubscription>>();
+        
         public Task<SubscriptionToken> Subscribe<TEventBase>(Action<TEventBase> action) where TEventBase : EventBase
         {
             if (action == null)
@@ -79,7 +77,5 @@ namespace SKDClassicalExample.EventBus
             void PublishAction() => PublishInternal(eventItem);
             await Task.Run((Action) PublishAction);
         }
-
-        private readonly Dictionary<Type, List<ISubscription>> _subscriptions;
     }
 }

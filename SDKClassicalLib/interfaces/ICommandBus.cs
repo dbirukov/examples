@@ -1,10 +1,12 @@
-﻿using SDKClassicalLib.Commands;
+﻿using System;
+using System.Threading.Tasks;
+using SDKClassicalLib.Commands;
 
 namespace SDKClassicalLib.Interfaces
 {
     public interface ICommandBus
     {
-        void Send<TCommand>(TCommand data) where TCommand : CommandBase;
-        void Handle<TCommand, THandler>(ICommandHandler handler) where TCommand : CommandBase;
+        Task Send<TCommand>(TCommand command) where TCommand : CommandBase;
+        void Handle<TCommand>(Func<CommandBase, Task> handler) where TCommand : CommandBase;
     }
 }
