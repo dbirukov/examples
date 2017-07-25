@@ -58,7 +58,7 @@ namespace SDKClassicalESExample
         {
             return new[]
             {
-                new EventData(Guid.NewGuid(), typeof(TEventBase).AssemblyQualifiedName, true,
+                new EventData(Guid.NewGuid(), typeof(TEventBase).ToString(), true,
                     Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event)), null)
             };
         }
