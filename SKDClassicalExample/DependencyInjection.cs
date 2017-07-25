@@ -1,8 +1,9 @@
 ﻿using System;
 using Autofac;
+using SDKClassicalLib;
+using SDKClassicalLib.Events;
+using SDKClassicalLib.Interfaces;
 using SKDClassicalExample;
-using SKDClassicalExample.Events;
-using SKDClassicalExample.Interfaces;
 
 namespace SDKExample1
 {

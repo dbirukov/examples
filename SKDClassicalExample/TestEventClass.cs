@@ -1,5 +1,5 @@
 ﻿using System;
-using SKDClassicalExample.Events;
+using SDKClassicalLib.Events;
 
 namespace SKDClassicalExample
 {

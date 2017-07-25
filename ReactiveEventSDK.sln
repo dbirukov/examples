@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Reactive", "Even
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKDClassicalExample", "SKDClassicalExample\SKDClassicalExample.csproj", "{83335D85-887B-458B-BAAC-FEBE139BBBAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKClassicalLib", "SDKClassicalLib\SDKClassicalLib.csproj", "{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

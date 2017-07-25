@@ -1,7 +1,7 @@
 ﻿using System;
 using SDKExample1;
-using SKDClassicalExample.Events;
-using SKDClassicalExample.Interfaces;
+using SDKClassicalLib.Events;
+using SDKClassicalLib.Interfaces;
 
 namespace SKDClassicalExample
 {
@@ -23,7 +23,5 @@ namespace SKDClassicalExample
             eventBus.Publish(new GenericEvent<string>("Hello"));
             eventBus.Publish(new GenericEvent<int>(123));
         }
-        
-
     }
 }

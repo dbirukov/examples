@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SKDClassicalExample.Events;
-using SKDClassicalExample.Interfaces;
+using SDKClassicalLib;
+using SDKClassicalLib.Events;
+using SDKClassicalLib.Interfaces;
 
 namespace SKDClassicalExample
 {

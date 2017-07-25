@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace SKDClassicalExample
+namespace SDKClassicalLib
 {
     public class SubscriptionToken
     {
-        internal SubscriptionToken(Type eventItemType)
+        public SubscriptionToken(Type eventItemType)
         {
             Token = Guid.NewGuid();
             EventItemType = eventItemType;

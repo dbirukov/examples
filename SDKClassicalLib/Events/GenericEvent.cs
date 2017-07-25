@@ -1,4 +1,4 @@
-﻿namespace SKDClassicalExample.Events
+﻿namespace SDKClassicalLib.Events
 {
     public class GenericEvent<TPayload> : EventBase
     {

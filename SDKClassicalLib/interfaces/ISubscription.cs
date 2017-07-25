@@ -1,6 +1,6 @@
-﻿using SKDClassicalExample.Events;
+﻿using SDKClassicalLib.Events;
 
-namespace SKDClassicalExample.Interfaces
+namespace SDKClassicalLib.Interfaces
 {
     public interface ISubscription
     {
