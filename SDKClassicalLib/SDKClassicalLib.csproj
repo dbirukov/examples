@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Events\EventBase.cs" />
     <Compile Include="Events\GenericEvent.cs" />
+    <Compile Include="Events\Metadata.cs" />
     <Compile Include="interfaces\IEventBus.cs" />
     <Compile Include="interfaces\ISubscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
