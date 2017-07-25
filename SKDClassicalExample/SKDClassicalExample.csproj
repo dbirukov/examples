@@ -48,7 +48,6 @@
     <Compile Include="EventBus.cs" />
     <Compile Include="Events\EventBase.cs" />
     <Compile Include="Events\GenericEvent.cs" />
-    <Compile Include="Extensions\RedBusExtensions.cs" />
     <Compile Include="interfaces\IEventBus.cs" />
     <Compile Include="interfaces\ISubscription.cs" />
     <Compile Include="Program.cs" />
