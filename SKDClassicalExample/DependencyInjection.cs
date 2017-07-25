@@ -19,8 +19,8 @@ namespace SDKExample1
 
             builder.RegisterInstance(bus);
             
-            var unsubGenericToken = bus.Subscribe<GenericEvent<int>>(OnIntEvent); 
-            var unsubTestEvent = bus.Subscribe<TestEventClass>(OnCustomEvent); 
+            var unsubGenericToken = bus.Subscribe<GenericEvent<int>>(OnIntEvent).Result; 
+            var unsubTestEvent = bus.Subscribe<TestEventClass>(OnCustomEvent).Result; 
             
             Container = builder.Build();
         }

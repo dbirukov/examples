@@ -15,7 +15,7 @@ namespace SKDClassicalExample
             _subscriptions = new Dictionary<Type, List<ISubscription>>();
         }
 
-        public SubscriptionToken Subscribe<TEventBase>(Action<TEventBase> action) where TEventBase : EventBase
+        public Task<SubscriptionToken> Subscribe<TEventBase>(Action<TEventBase> action) where TEventBase : EventBase
         {
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
@@ -25,24 +25,29 @@ namespace SKDClassicalExample
 
             var token = new SubscriptionToken(typeof(TEventBase));
             _subscriptions[typeof(TEventBase)].Add(new Subscription<TEventBase>(action, token));
-            return token;
+            return Task.Run(() => token);
         }
 
-        public void Unsubscribe(SubscriptionToken token)
+        public Task Unsubscribe(SubscriptionToken token)
         {
-            if (token == null)
-                throw new ArgumentNullException(nameof(token));
+            return Task.Run(() =>
+            {
 
-            if (!_subscriptions.ContainsKey(token.EventItemType)) return;
-            
-            var allSubscriptions = _subscriptions[token.EventItemType];
-            var subscriptionToRemove =
-                allSubscriptions.FirstOrDefault(x => x.SubscriptionToken.Token == token.Token);
-            if (subscriptionToRemove != null)
-                _subscriptions[token.EventItemType].Remove(subscriptionToRemove);
+                if (token == null)
+                    throw new ArgumentNullException(nameof(token));
+
+                if (!_subscriptions.ContainsKey(token.EventItemType)) return;
+
+                var allSubscriptions = _subscriptions[token.EventItemType];
+                var subscriptionToRemove =
+                    allSubscriptions.FirstOrDefault(x => x.SubscriptionToken.Token == token.Token);
+
+                if (subscriptionToRemove != null)
+                    _subscriptions[token.EventItemType].Remove(subscriptionToRemove);
+            });
         }
 
-        public void Publish<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
+        private void PublishInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
             if (eventItem == null)
                 throw new ArgumentNullException(nameof(eventItem));
@@ -64,14 +69,14 @@ namespace SKDClassicalExample
             }
         }
 
-        public Task PublishAsync<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
+        public Task Publish<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
             return PublishAsyncInternal(eventItem);
         }
 
         private async Task PublishAsyncInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
-            void PublishAction() => Publish(eventItem);
+            void PublishAction() => PublishInternal(eventItem);
             await Task.Run((Action) PublishAction);
         }
 

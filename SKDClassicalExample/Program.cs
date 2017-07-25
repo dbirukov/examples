@@ -13,15 +13,19 @@ namespace SKDClassicalExample
             
             IEventBus eventBus = di.Resolve<IEventBus>();
             
-            eventBus.Publish(new TestEventClass(Guid.NewGuid()));
+            eventBus.Publish(new TestEventClass(Guid.NewGuid())); // publishing custom user event
   
             eventBus.Subscribe<GenericEvent<string>>(s =>
             {
-                Console.WriteLine(s.Payload);
+                Console.WriteLine("String subscription 1: {0}", s.Payload);
+            });
+            eventBus.Subscribe<GenericEvent<string>>(s =>
+            {
+                Console.WriteLine("String subscription 2: {0}", s.Payload);
             });
   
-            eventBus.Publish(new GenericEvent<string>("Hello"));
-            eventBus.PublishAsync(new GenericEvent<int>(123)).Wait();
+            eventBus.Publish(new GenericEvent<string>("Hello")).Wait(); // publishing custom data 
+            eventBus.Publish(new GenericEvent<int>(123)).Wait(); // publishing custom data 
         }
     }
 }
