@@ -5,7 +5,7 @@ using SDKClassicalLib;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 
-namespace SDK_EventStore_Lib
+namespace SDK_EventStore_Lib.EventBus
 {
     internal class EsSubscription<TEventBase> : ISubscription where TEventBase : EventBase
     {

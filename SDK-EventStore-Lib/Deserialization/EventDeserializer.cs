@@ -4,7 +4,7 @@ using EventStore.ClientAPI;
 using Newtonsoft.Json;
 using SDKClassicalLib.Events;
 
-namespace SDK_EventStore_Lib
+namespace SDK_EventStore_Lib.Deserialization
 {
     internal static class EventDeserializer
     {

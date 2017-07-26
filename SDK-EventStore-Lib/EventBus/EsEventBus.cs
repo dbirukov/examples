@@ -8,8 +8,10 @@ using Newtonsoft.Json;
 using SDKClassicalLib;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
+using SDK_EventStore_Lib.Deserialization;
+using SDK_EventStore_Lib.Extentions;
 
-namespace SDK_EventStore_Lib
+namespace SDK_EventStore_Lib.EventBus
 {
     public class EsEventBus : IEventBus
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SDK_EventStore_Lib
+namespace SDK_EventStore_Lib.Extentions
 {
     public static class TaskExtentions
     {

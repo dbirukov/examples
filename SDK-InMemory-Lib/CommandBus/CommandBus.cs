@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SDKClassicalLib.CommandBus;
 using SDKClassicalLib.Commands;
-using SDKClassicalLib.Interfaces;
 
 namespace SDK_InMemory_Lib.CommandBus
 {
@@ -19,7 +19,7 @@ namespace SDK_InMemory_Lib.CommandBus
             }
         }
 
-        public void Handle<TCommand>(Func<CommandBase, Task> handler) where TCommand : CommandBase
+        public void Handle<TCommand>(Func<TCommand, Task> handler) where TCommand : CommandBase
         {
             if (handler == null)
             {
@@ -31,7 +31,7 @@ namespace SDK_InMemory_Lib.CommandBus
                 throw new Exception($"Handler for {typeof(TCommand)} exist");
             }
 
-            _commandHandlers.Add(typeof(TCommand), new CommandHandler(handler));
+            _commandHandlers.Add(typeof(TCommand), new CommandHandler<TCommand>(handler));
         }
     }
 }

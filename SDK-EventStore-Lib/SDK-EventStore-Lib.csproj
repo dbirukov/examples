@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EsEventBus.cs" />
-    <Compile Include="EsSubscription.cs" />
-    <Compile Include="EventDeserializer.cs" />
+    <Compile Include="Deserialization\EventDeserializer.cs" />
+    <Compile Include="EventBus\EsEventBus.cs" />
+    <Compile Include="EventBus\EsSubscription.cs" />
+    <Compile Include="Extentions\TaskExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskExtentions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
