@@ -22,10 +22,14 @@ namespace SKDClassicalExample.CommandBus
         public void Handle<TCommand>(Func<CommandBase, Task> handler) where TCommand : CommandBase
         {
             if (handler == null)
+            {
                 throw new ArgumentNullException(nameof(handler));
+            }
 
             if (_commandHandlers.ContainsKey(typeof(TCommand)))
+            {
                 throw new Exception($"Handler for {typeof(TCommand)} exist");
+            }
 
             _commandHandlers.Add(typeof(TCommand), new CommandHandler(handler));
         }

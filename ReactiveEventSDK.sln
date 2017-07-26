@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKExample1", "SDKExample1\SDKExample1.csproj", "{FC7C65DB-00A4-4B3E-B1AD-51251A1A724A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Reactive", "EventStore.Reactive\EventStore.Reactive.csproj", "{04CA06D7-DD59-42F3-B936-5B038649AF5D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKDClassicalExample", "SKDClassicalExample\SKDClassicalExample.csproj", "{83335D85-887B-458B-BAAC-FEBE139BBBAD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKClassicalLib", "SDKClassicalLib\SDKClassicalLib.csproj", "{1FF5BCDA-C321-403D-BE1F-3F8C02A62BBF}"
@@ -19,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC7C65DB-00A4-4B3E-B1AD-51251A1A724A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC7C65DB-00A4-4B3E-B1AD-51251A1A724A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC7C65DB-00A4-4B3E-B1AD-51251A1A724A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC7C65DB-00A4-4B3E-B1AD-51251A1A724A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04CA06D7-DD59-42F3-B936-5B038649AF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04CA06D7-DD59-42F3-B936-5B038649AF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04CA06D7-DD59-42F3-B936-5B038649AF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04CA06D7-DD59-42F3-B936-5B038649AF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83335D85-887B-458B-BAAC-FEBE139BBBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU

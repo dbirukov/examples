@@ -40,6 +40,5 @@ namespace SKDClassicalExample
             Console.WriteLine("->>Press key to stop waiting events");
             Console.ReadKey();
         }
-
     }
 }
