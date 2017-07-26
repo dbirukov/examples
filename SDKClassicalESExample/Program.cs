@@ -11,14 +11,14 @@ namespace SDKClassicalESExample
         {
             AsyncMain().GetAwaiter().GetResult();
         }
-        
-        static async Task AsyncMain()
+
+        private static async Task AsyncMain()
         {
             var di = new DependencyInjection();
             
             IEventBus eventBus = di.Resolve<IEventBus>();
             
-            await eventBus.Publish(new TestEventClass(Guid.NewGuid())); // publishing custom user event
+            await eventBus.Publish(new TestEventClass(Guid.NewGuid(), DateTime.Now)); // publishing custom user event
 
             await eventBus.Subscribe<GenericEvent<string>>(s =>
             {
