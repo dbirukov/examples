@@ -3,6 +3,7 @@ using System.Net;
 using Autofac;
 using EventStore.ClientAPI;
 using EventStore.ClientAPI.SystemData;
+using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 

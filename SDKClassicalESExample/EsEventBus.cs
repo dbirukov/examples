@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EventStore.ClientAPI;
 using Newtonsoft.Json;
 using SDKClassicalLib;
+using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 
@@ -93,12 +94,15 @@ namespace SDKClassicalESExample
         
         private Action<EventStoreSubscription, ResolvedEvent> EventAppeared<TEventBase>(EsSubscription<TEventBase> esSubscription) where TEventBase : EventBase
         {
-            return (subscription, resolvedEvent) =>
+            return async (subscription, resolvedEvent) =>
             {
                 try
                 {
                     var @event = EventDeserializer.Deserialize<TEventBase>(resolvedEvent);
-                    if (@event != null) esSubscription.Publish(@event);
+                    if (@event != null)
+                    {
+                        await esSubscription.Publish(@event);
+                    }
                 }
                 catch (Exception e)
                 {

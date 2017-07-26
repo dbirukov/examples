@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SDKClassicalLib;
+using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 

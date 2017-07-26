@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SDKClassicalLib.Events;
 
-namespace SDKClassicalLib.Interfaces
+namespace SDKClassicalLib.EventBus
 {
     public interface IEventBus
     {

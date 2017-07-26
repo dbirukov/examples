@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EventStore.ClientAPI;
 using SDKClassicalLib;
+using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 
@@ -13,7 +15,7 @@ namespace SDKClassicalESExample
         public EventStoreSubscription EventStoreSubscription
         {
             get; 
-            set; //todo remove
+            set; //todo refactor
         }
 
         public EsSubscription(Action<TEventBase> action, SubscriptionToken token)
@@ -22,20 +24,21 @@ namespace SDKClassicalESExample
             SubscriptionToken = token ?? throw new ArgumentNullException(nameof(token));
         }
 
-
-        public void Publish(EventBase eventItem)
+        public async Task Publish(EventBase eventItem)
         {
             if (!(eventItem is TEventBase))
+            {
                 throw new ArgumentException("Event Item is not the correct type.");
+            }
 
-            _action.Invoke((TEventBase) eventItem);
+            await Task.Run(() => _action.Invoke((TEventBase) eventItem));
         }
-
-        private readonly Action<TEventBase> _action;
 
         public void Dispose()
         {
             EventStoreSubscription?.Dispose();
         }
+        
+        private readonly Action<TEventBase> _action;
     }
 }

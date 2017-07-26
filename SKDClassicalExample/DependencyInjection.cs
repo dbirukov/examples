@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using SDKClassicalLib;
+using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
 using SKDClassicalExample;
