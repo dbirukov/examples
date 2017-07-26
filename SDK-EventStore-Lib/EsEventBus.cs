@@ -8,9 +8,8 @@ using Newtonsoft.Json;
 using SDKClassicalLib;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
-using SDKClassicalLib.Interfaces;
 
-namespace SDKClassicalESExample
+namespace SDK_EventStore_Lib
 {
     public class EsEventBus : IEventBus
     {
@@ -47,19 +46,29 @@ namespace SDKClassicalESExample
         public async Task Unsubscribe(SubscriptionToken token)
         {
             if (token == null)
-                throw new ArgumentNullException(nameof(token));
-
-            if (!_subscriptions.ContainsKey(token.EventItemType)) return;
-
-            var allSubscriptions = _subscriptions[token.EventItemType];
-            var subscriptionToRemove =
-                allSubscriptions.FirstOrDefault(x => x.SubscriptionToken.Token == token.Token);
-
-            if (subscriptionToRemove != null)
             {
+                throw new ArgumentNullException(nameof(token));
+            }
+
+            if (!_subscriptions.ContainsKey(token.EventItemType))
+            {
+                return;
+            }
+
+            await Task.Run(() =>
+            {
+                var allSubscriptions = _subscriptions[token.EventItemType];
+                var subscriptionToRemove =
+                    allSubscriptions.FirstOrDefault(x => x.SubscriptionToken.Token == token.Token);
+
+                if (subscriptionToRemove == null)
+                {
+                    return;
+                }
+                
                 _subscriptions[token.EventItemType].Remove(subscriptionToRemove);
                 subscriptionToRemove.Dispose();
-            }
+            });
         }
 
         public Task Publish<TEventBase>(TEventBase @event) where TEventBase : EventBase

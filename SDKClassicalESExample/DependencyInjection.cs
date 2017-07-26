@@ -5,7 +5,7 @@ using EventStore.ClientAPI;
 using EventStore.ClientAPI.SystemData;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
-using SDKClassicalLib.Interfaces;
+using SDK_EventStore_Lib;
 
 namespace SDKClassicalESExample
 {

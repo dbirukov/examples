@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
-using SDKClassicalLib.Interfaces;
 
 namespace SDKClassicalESExample
 {

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKClassicalLib", "SDKClass
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKClassicalESExample", "SDKClassicalESExample\SDKClassicalESExample.csproj", "{87547396-E88D-4FBE-9B17-46505FB41F82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK-EventStore-Lib", "SDK-EventStore-Lib\SDK-EventStore-Lib.csproj", "{5444CF8B-0504-4EEA-8923-4C9801502911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDK-InMemory-Lib", "SDK-InMemory-Lib\SDK-InMemory-Lib.csproj", "{0A9AED83-18B5-4205-8CF8-1C628F99E6F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{87547396-E88D-4FBE-9B17-46505FB41F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87547396-E88D-4FBE-9B17-46505FB41F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87547396-E88D-4FBE-9B17-46505FB41F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5444CF8B-0504-4EEA-8923-4C9801502911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5444CF8B-0504-4EEA-8923-4C9801502911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5444CF8B-0504-4EEA-8923-4C9801502911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5444CF8B-0504-4EEA-8923-4C9801502911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9AED83-18B5-4205-8CF8-1C628F99E6F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9AED83-18B5-4205-8CF8-1C628F99E6F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9AED83-18B5-4205-8CF8-1C628F99E6F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9AED83-18B5-4205-8CF8-1C628F99E6F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

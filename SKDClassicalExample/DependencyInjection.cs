@@ -1,11 +1,9 @@
 ﻿using System;
 using Autofac;
-using SDKClassicalLib;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
-using SDKClassicalLib.Interfaces;
+using SDK_InMemory_Lib.EventBus;
 using SKDClassicalExample;
-using SKDClassicalExample.EventBus;
 
 namespace SDKExample1
 {

@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using SDKClassicalLib;
 using SDKClassicalLib.EventBus;
 using SDKClassicalLib.Events;
-using SDKClassicalLib.Interfaces;
 
-namespace SKDClassicalExample.EventBus
+namespace SDK_InMemory_Lib.EventBus
 {
     public class EventBus : IEventBus
     {

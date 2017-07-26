@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using SDKClassicalLib.Commands;
 using SDKClassicalLib.Interfaces;
 
-namespace SKDClassicalExample.CommandBus
+namespace SDK_InMemory_Lib.CommandBus
 {
     public class CommandHandler : ICommandHandler
     {

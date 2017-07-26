@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SDKClassicalESExample
+namespace SDK_EventStore_Lib
 {
     public static class TaskExtentions
     {
