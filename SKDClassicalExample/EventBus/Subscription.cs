@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SDKClassicalLib;
 using SDKClassicalLib.Events;
 using SDKClassicalLib.Interfaces;
@@ -15,19 +16,20 @@ namespace SKDClassicalExample.EventBus
             SubscriptionToken = token ?? throw new ArgumentNullException(nameof(token));
         }
 
-
-        public void Publish(EventBase eventItem)
+        public Task Publish(EventBase eventItem)
         {
             if (!(eventItem is TEventBase))
+            {
                 throw new ArgumentException("Event Item is not the correct type.");
+            }
 
-            _action.Invoke((TEventBase) eventItem);
+            return Task.Run(() => _action.Invoke((TEventBase) eventItem));
         }
-
-        private readonly Action<TEventBase> _action;
 
         public void Dispose()
         {
         }
+        
+        private readonly Action<TEventBase> _action;
     }
 }

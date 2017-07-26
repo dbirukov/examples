@@ -45,7 +45,7 @@ namespace SKDClassicalExample.EventBus
             });
         }
 
-        private void PublishInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
+        private async Task PublishInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
             if (eventItem == null)
                 throw new ArgumentNullException(nameof(eventItem));
@@ -54,28 +54,12 @@ namespace SKDClassicalExample.EventBus
             if (_subscriptions.ContainsKey(typeof(TEventBase)))
                 allSubscriptions = _subscriptions[typeof(TEventBase)];
 
-            foreach (var subscription in allSubscriptions)
-            {
-                try
-                {
-                    subscription.Publish(eventItem);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception);
-                }
-            }
+            await Task.WhenAll(allSubscriptions.Select(subscription => subscription.Publish(eventItem)));
         }
 
         public Task Publish<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
         {
-            return PublishAsyncInternal(eventItem);
-        }
-
-        private async Task PublishAsyncInternal<TEventBase>(TEventBase eventItem) where TEventBase : EventBase
-        {
-            void PublishAction() => PublishInternal(eventItem);
-            await Task.Run((Action) PublishAction);
+            return PublishInternal(eventItem);
         }
     }
 }

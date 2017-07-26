@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SDKClassicalLib.Events;
 
 namespace SDKClassicalLib.Interfaces
@@ -6,6 +7,6 @@ namespace SDKClassicalLib.Interfaces
     public interface ISubscription: IDisposable
     {
         SubscriptionToken SubscriptionToken { get; }
-        void Publish(EventBase eventBase);
+        Task Publish(EventBase eventBase);
     }
 }
